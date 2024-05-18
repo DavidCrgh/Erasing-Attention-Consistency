@@ -174,9 +174,11 @@ def main():
     
     for i in range(1, args.epochs + 1):
         train_acc, train_loss = train(args, model, train_loader, optimizer, scheduler, device)
+        print('Train Epoch: '+str(i)+'_'+str(train_acc)+'\n')
+        
         test_acc, test_loss = test(model, test_loader, device)
         with open('rebuttal_50_noise_'+str(args.label_path)+'.txt', 'a') as f:
-            f.write(str(i)+'_'+str(test_acc)+'\n')
+            f.write('Test Epoch: '+str(i)+'_'+str(test_acc)+'\n')
 
 
 
